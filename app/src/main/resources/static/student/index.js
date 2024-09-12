@@ -87,13 +87,18 @@ function getStudent(e) {
       if (student.photo) {
         document.querySelector(
           "#f-photo-origin"
-        ).href = `https://kr.object.ncloudstorage.com/ncp08-bucket-9999-member-photo/${student.photo}`;
+        ).href = `https://kr.object.ncloudstorage.com/ncp-ai08-bucket-1117-member-photo/${student.photo}`;
         document.querySelector(
           "#f-photo"
-        ).src = `https://qpiqyyah3598.edge.naverncp.com/bwoyTzEyAM/${student.photo}?type=f&w=80&h=80&faceopt=true&ttype=jpg`;
+        ).src = `https://ltwnnyna4719.edge.naverncp.com/Di7fzaHNV4/${student.photo}?type=f&w=80&h=80&faceopt=true&ttype=jpg`;
       } /*else {
         document.querySelector("#f-photo").src = "../images/no-body.webp";
       }*/
+
+      S
+      //student.photo=icando.jp
+      // https://ltwnnyna4719.edge.naverncp.com/Di7fzaHNV4/icando.jpg?type=f&w=80&h=80&faceopt=true&ttype=jpg
+
       document.querySelector("#f-tel").value = student.tel;
       document.querySelector("#f-postNo").value = student.postNo;
       document.querySelector("#f-basicAddress").value = student.basicAddress;

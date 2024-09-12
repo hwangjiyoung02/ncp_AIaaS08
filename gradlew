@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#빌드할때 쓰는 파일- 오른 네브바의 코끼리
 #
 # Copyright © 2015-2021 the original authors.
 #

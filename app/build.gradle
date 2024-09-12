@@ -79,6 +79,7 @@ dependencies {
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   
   //implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+  //이미지를 업로드할 때 naverobstrorage
   implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.4'
   
   

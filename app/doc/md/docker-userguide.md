@@ -12,13 +12,13 @@
 
 ### 도커 설치 스크립트 다운로드
 
-`$ sudo apt-get update`
-`$ sudo apt-get install curl`
-`$ curl https://get.docker.com > docker-install.sh`
-`$ chmod 755 docker-install.sh`
+`$ sudo apt-get update`#저장소 정보 갱신
+`$ sudo apt-get install curl`#주소만 주면 파일을 가져오는 application
+`$ curl https://get.docker.com > docker-install.sh`#웹에 있는 정보를 가져와서 파일을 만들으렴
+`$ chmod 755 docker-install.sh`#도커 install을 위한 권한 바꾸기
 
 ### 도커 설치
-
+## 잰킨스를 도커 컨테이너에 올림
 `$ sudo ./docker-install.sh`
 
 ## 도커 컨테이너 다루기
@@ -39,7 +39,6 @@
 ### 도커 컨테이너 실행 세부 단계
 
 도커 이미지 내려받기
-
 - `$ sudo docker pull centos:7`
 
 도커 이미지 목록 확인하기

@@ -15,7 +15,7 @@
 ### 젠킨스 도커 컨테이너 생성 및 실행
 
 젠킨스 도커 이미지 가져오기
-
+도커 허브에 있음
 ```
 # docker pull jenkins/jenkins:lts-jdk17
 # docker image ls
@@ -24,6 +24,7 @@
 #### 도커 이미지 만들기: 젠킨스 + JDK17 + 도커 클라이언트
 
 작업 디렉토리 생성
+기존 이미지를 기반으로 우리가 사용할 걸 만듦
 
 ```
 # mkdir docker-workspace
@@ -33,7 +34,7 @@
 install-docker.sh 파일 생성
 
 ```
-# vi install-docker.sh
+# nano install-docker.sh
 ```
 
 install-docker.sh 파일 내용
@@ -91,24 +92,24 @@ USER jenkins
 도커 이미지 생성
 
 ```
-# docker build -t suhodo/my-jenkins:1.0 .
+# docker build -t hwangjiyoung/my-jenkins:1.0 .
 ```
 
 도커 이미지를 도커 허브 사이트에 업로드 하기
 
 ```
 # docker login
-# docker push suhodo/my-jenkins:1.0
+# docker push hwangjiyoung/my-jenkins:1.0
 ```
 
 컨테이너 생성 및 실행하기
 
 ```
-# docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure --network="jenkins" --name my-jenkins suhodo/my-jenkins:1.0
+# docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure --network="jenkins" --name my-jenkins hwangjiyoung/my-jenkins:1.0
 # docker container ls
 ```
 
-젠킨스 컨테이너를 재생성 할 때, 기존 젠킨스 볼륨을 제거하기
+젠킨스 컨테이너를 재생성 할 때, 기존 젠킨스 볼륨을 제거하기---------d아 짜증나
 
 ```
 # docker volume ls
@@ -137,7 +138,7 @@ USER jenkins
 암호확인: 1111
 이름: jenkins
 이메일주소: xxx@xxx.xxx
-```
+```http://223.130.146.124:8080/
 
 젠킨스 루트 URL 설정
 
@@ -188,26 +189,26 @@ Dashboard
   - General
     - 설명: `빌드 테스트1`
     - `GitHub project` 체크
-      - Project url: `https://github.com/NCP08/ncp-myapp.git`
+      - Project url: `https://github.com/hwangjiyoung02/ncp_AIaaS08.git`
   - 소스 코드 관리
     - `Git` 선택
-      - Repository URL: `https://github.com/NCP08/ncp-myapp.git`
+      - Repository URL: `https://github.com/hwangjiyoung02/ncp_AIaaS08.git`
       - Credentials:
         - Add 버튼 클릭: `Add Jenkins` 선택
         - `Username with Password` 선택
           - Username: 깃허브 사용자이름
           - Password: 깃허브 토큰
-        - `Username/토큰` 선택
+        - `Username/토큰` 선택 
       - Branch Specifier: \*/main
   - 빌드 유발
-    - `GitHub hook trigger for GITScm polling` 선택
+    - `GitHub hook trigger for GITScm polling` 선택 comit push하면 hook 걸어뒀다가 trigger가 걸리면 jenkins가 깃허브 코드를 가져감
   - Build Steps
     - `Invoke Gradle script` 선택
       - `Use Gradle Wrapper` 선택
         - `Make gradlew executable` 체크
         - Wrappter location: 비워둠
       - Tasks
-        - `clean npmSetup appNpmInstall build`
+        - `clean build`
         - 입력
   - 저장
 - `지금 빌드` 클릭
