@@ -108,12 +108,22 @@ USER jenkins
 # docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure --network="jenkins" --name my-jenkins hwangjiyoung/my-jenkins:1.0
 # docker container ls
 ```
+```
+젠킨스 다시 설치하고 싶을 때 
+# docker ps -- 도커 컨테이너 확인
+# docker container stop id
+#docker container remove id
+-- volumne을 삭제해야 완전히 초기화 된다.
 
-젠킨스 컨테이너를 재생성 할 때, 기존 젠킨스 볼륨을 제거하기---------d아 짜증나
+ 
+```
+** 옵션 젠킨스 컨테이너를 재생성 할 때, 기존 젠킨스 볼륨을 제거하기---------d아 짜증나
 
 ```
 # docker volume ls
 # docker volume rm jenkins_home
+# docken run --privileged -d 어쩌구 hwangjiyoung/myjenkins -- 도커 컨테이너 재생성
+# docker container ls -- 확인
 ```
 
 ### 젠킨스 설정
